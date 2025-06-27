@@ -1,7 +1,8 @@
 // src/App.jsx
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { Search, MapPin, DollarSign, Clock, Star, Navigation, List, Map } from 'lucide-react';
+import MapView from './components/MapView.jsx';
 
 function App() {
   const [location, setLocation] = useState('');
@@ -12,9 +13,6 @@ function App() {
   const [categoryFilter, setCategoryFilter] = useState('');
   const [userCoords, setUserCoords] = useState(null);
   const [viewMode, setViewMode] = useState('list');
-  const mapRef = useRef(null);
-  const mapInstanceRef = useRef(null);
-  const markersRef = useRef([]);
 
   const categories = [
     { value: '', label: 'All Categories' },
@@ -30,98 +28,6 @@ function App() {
     { value: 'coffee', label: 'Coffee' }
   ];
 
-  // Initialize map when switching to map view
-  useEffect(() => {
-    if (viewMode === 'map' && mapRef.current && !mapInstanceRef.current) {
-      if (!window.L) {
-        const script = document.createElement('script');
-        script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-        script.onload = initializeMap;
-        document.head.appendChild(script);
-      } else {
-        initializeMap();
-      }
-    }
-  }, [viewMode]);
-
-  const initializeMap = () => {
-    if (window.L && mapRef.current && !mapInstanceRef.current) {
-      try {
-        const map = window.L.map(mapRef.current).setView([40.7128, -73.9060], 12);
-        
-        window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        mapInstanceRef.current = map;
-        
-        if (results.length > 0) {
-          updateMapMarkers();
-        }
-      } catch (error) {
-        console.error('Map initialization error:', error);
-      }
-    }
-  };
-
-  const updateMapMarkers = () => {
-    if (!mapInstanceRef.current || !window.L) return;
-
-    try {
-      markersRef.current.forEach(marker => {
-        try {
-          marker.remove();
-        } catch (e) {
-          console.warn('Error removing marker:', e);
-        }
-      });
-      markersRef.current = [];
-
-      const validResults = results.filter(place => 
-        place.coordinates && 
-        place.coordinates.latitude && 
-        place.coordinates.longitude
-      );
-
-      validResults.forEach(place => {
-        try {
-          const marker = window.L.marker([
-            place.coordinates.latitude, 
-            place.coordinates.longitude
-          ])
-            .addTo(mapInstanceRef.current)
-            .bindPopup(`
-              <div class="p-2 max-w-sm">
-                <h3 class="font-semibold text-sm">${place.name}</h3>
-                <p class="text-xs text-gray-600">${place.categories.map(c => c.title).join(', ')}</p>
-                <p class="text-xs">⭐ ${place.rating?.toFixed(1)} | ${place.price}</p>
-                <p class="text-xs">${place.location.address1}</p>
-              </div>
-            `);
-          markersRef.current.push(marker);
-        } catch (error) {
-          console.warn('Error adding marker:', error);
-        }
-      });
-
-      if (markersRef.current.length > 0) {
-        try {
-          const group = window.L.featureGroup(markersRef.current);
-          mapInstanceRef.current.fitBounds(group.getBounds().pad(0.1));
-        } catch (error) {
-          console.warn('Error fitting map bounds:', error);
-        }
-      }
-    } catch (error) {
-      console.error('Error updating map markers:', error);
-    }
-  };
-
-  useEffect(() => {
-    if (viewMode === 'map' && results.length > 0) {
-      updateMapMarkers();
-    }
-  }, [results, viewMode]);
 
   // Enhanced geocoding for NYC
   const geocodeAddress = async (address) => {
@@ -532,8 +438,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Leaflet CSS */}
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
@@ -733,7 +637,7 @@ function App() {
 
         {viewMode === 'map' && (
           <div className="bg-white rounded-lg shadow-sm border overflow-hidden">
-            <div ref={mapRef} className="w-full h-96"></div>
+            <MapView places={results} />
           </div>
         )}
 
