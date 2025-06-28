@@ -3,4 +3,6 @@ export default {
     tailwindcss: {},
     autoprefixer: {},
   },
+  base: "/cheap-eats-nyc/", 
+
 }
