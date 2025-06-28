@@ -1,639 +1,92 @@
-/* src/index.css - Complete standalone styles for Cheap Eats NYC */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-  color: #374151;
-  background-color: #f9fafb;
-}
-
-#root {
-  width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
-/* Utility Classes */
-.min-h-screen { min-height: 100vh; }
-
-/* Backgrounds */
-.bg-gray-50 { background-color: #f8fafc; }
-.bg-white { background-color: #ffffff; }
-.bg-primary-500 { background-color: #6366f1; }
-.bg-primary-600 { background-color: #4f46e5; }
-.bg-primary-700 { background-color: #4338ca; }
-.bg-gray-100 { background-color: #f1f5f9; }
-.bg-gray-200 { background-color: #e2e8f0; }
-.bg-primary-50 { background-color: #eef2ff; }
-.bg-green-100 { background-color: #dcfce7; }
-.bg-emerald-100 { background-color: #d1fae5; }
-.bg-amber-100 { background-color: #fef3c7; }
-
-/* Custom gradient backgrounds */
-.bg-gradient-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-.bg-gradient-card {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-}
-.bg-gradient-food {
-  background: linear-gradient(135deg, #fef7ed 0%, #fed7aa 100%);
-}
-
-/* Text Colors */
-.text-white { color: #ffffff; }
-.text-gray-900 { color: #0f172a; }
-.text-gray-800 { color: #1e293b; }
-.text-gray-700 { color: #334155; }
-.text-gray-600 { color: #475569; }
-.text-gray-500 { color: #64748b; }
-.text-gray-400 { color: #94a3b8; }
-.text-gray-300 { color: #cbd5e1; }
-.text-primary-800 { color: #3730a3; }
-.text-primary-600 { color: #4f46e5; }
-.text-primary-500 { color: #6366f1; }
-.text-primary-400 { color: #818cf8; }
-.text-green-600 { color: #16a34a; }
-.text-green-700 { color: #15803d; }
-.text-orange-600 { color: #ea580c; }
-.text-amber-600 { color: #d97706; }
-.text-emerald-600 { color: #059669; }
-.text-emerald-700 { color: #047857; }
-
-/* Borders */
-.border { border: 1px solid #e2e8f0; }
-.border-2 { border: 2px solid #e2e8f0; }
-.border-b { border-bottom: 1px solid #e2e8f0; }
-.border-gray-100 { border-color: #f1f5f9; }
-.border-gray-200 { border-color: #e2e8f0; }
-.border-gray-300 { border-color: #cbd5e1; }
-.border-primary-200 { border-color: #c7d2fe; }
-.border-primary-300 { border-color: #a5b4fc; }
-
-/* Border Radius */
-.rounded-xl { border-radius: 0.75rem; }
-.rounded-2xl { border-radius: 1rem; }
-.rounded-3xl { border-radius: 1.5rem; }
-.rounded-full { border-radius: 9999px; }
-
-/* Shadows */
-.shadow-sm { 
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
-}
-.shadow-lg { 
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.1); 
-}
-.shadow-xl { 
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.1); 
-}
-
-/* Position */
-.sticky { position: sticky; }
-.relative { position: relative; }
-.absolute { position: absolute; }
-.top-0 { top: 0; }
-.left-4 { left: 1rem; }
-.top-1\/2 { top: 50%; }
-.z-50 { z-index: 50; }
-
-/* Display */
-.flex { display: flex; }
-.grid { display: grid; }
-.hidden { display: none; }
-.block { display: block; }
-
-/* Flexbox */
-.flex-col { flex-direction: column; }
-.items-center { align-items: center; }
-.items-start { align-items: flex-start; }
-.justify-between { justify-content: space-between; }
-.justify-center { justify-content: center; }
-
-/* Spacing */
-.space-x-1 > * + * { margin-left: 0.25rem; }
-.space-x-2 > * + * { margin-left: 0.5rem; }
-.space-x-3 > * + * { margin-left: 0.75rem; }
-.space-x-4 > * + * { margin-left: 1rem; }
-.space-y-1 > * + * { margin-top: 0.25rem; }
-
-.gap-4 { gap: 1rem; }
-.gap-6 { gap: 1.5rem; }
-
-/* Width */
-.w-full { width: 100%; }
-.w-4 { width: 1rem; }
-.w-5 { width: 1.25rem; }
-.w-6 { width: 1.5rem; }
-.w-8 { width: 2rem; }
-.w-10 { width: 2.5rem; }
-.w-12 { width: 3rem; }
-.w-16 { width: 4rem; }
-.w-20 { width: 5rem; }
-
-/* Height */
-.h-4 { height: 1rem; }
-.h-5 { height: 1.25rem; }
-.h-6 { height: 1.5rem; }
-.h-8 { height: 2rem; }
-.h-10 { height: 2.5rem; }
-.h-12 { height: 3rem; }
-.h-16 { height: 4rem; }
-.h-20 { height: 5rem; }
-
-/* Max Width with centering */
-.max-w-7xl { 
-  max-width: 80rem; 
-  margin-left: auto; 
-  margin-right: auto; 
-}
-.max-w-2xl { 
-  max-width: 42rem; 
-  margin-left: auto; 
-  margin-right: auto; 
-}
-
-/* Margin */
-.mx-auto { margin-left: auto; margin-right: auto; }
-.mb-2 { margin-bottom: 0.5rem; }
-.mb-3 { margin-bottom: 0.75rem; }
-.mb-4 { margin-bottom: 1rem; }
-.mb-6 { margin-bottom: 1.5rem; }
-.mb-8 { margin-bottom: 2rem; }
-.mt-2 { margin-top: 0.5rem; }
-.mt-3 { margin-top: 0.75rem; }
-.mr-1 { margin-right: 0.25rem; }
-.mr-2 { margin-right: 0.5rem; }
-
-/* Padding */
-.p-2 { padding: 0.5rem; }
-.p-4 { padding: 1rem; }
-.p-6 { padding: 1.5rem; }
-.px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
-.px-4 { padding-left: 1rem; padding-right: 1rem; }
-.px-8 { padding-left: 2rem; padding-right: 2rem; }
-.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
-.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
-.py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
-.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
-.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
-.py-20 { padding-top: 5rem; padding-bottom: 5rem; }
-.pl-12 { padding-left: 3rem; }
-.pr-4 { padding-right: 1rem; }
-
-/* Typography */
-.text-sm { 
-  font-size: 0.875rem; 
-  line-height: 1.25rem; 
-}
-.text-base { 
-  font-size: 1rem; 
-  line-height: 1.5rem; 
-}
-.text-lg { 
-  font-size: 1.125rem; 
-  line-height: 1.75rem; 
-}
-.text-xl { 
-  font-size: 1.25rem; 
-  line-height: 1.75rem; 
-}
-.text-2xl { 
-  font-size: 1.5rem; 
-  line-height: 2rem; 
-}
-.text-3xl { 
-  font-size: 1.875rem; 
-  line-height: 2.25rem; 
-}
-
-.font-medium { font-weight: 500; }
-.font-semibold { font-weight: 600; }
-.font-bold { font-weight: 700; }
-
-.leading-tight { line-height: 1.25; }
-.text-center { text-align: center; }
-
-/* Transform */
-.transform { transform: translateZ(0); }
-.-translate-y-1\/2 { transform: translateY(-50%); }
-
-/* Transitions */
-.transition-colors { 
-  transition-property: color, background-color, border-color; 
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
-  transition-duration: 150ms; 
-}
-.transition-shadow { 
-  transition-property: box-shadow; 
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
-  transition-duration: 150ms; 
-}
-
-/* Misc */
-.cursor-pointer { cursor: pointer; }
-.overflow-hidden { overflow: hidden; }
-.truncate { 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  white-space: nowrap; 
-}
-.flex-shrink-0 { flex-shrink: 0; }
-
-/* Aspect Ratio */
-.aspect-video {
-  aspect-ratio: 16 / 9;
-}
-
-/* SVG */
-.fill-current {
-  fill: currentColor;
-}
-
-/* Grid System */
-.grid-cols-1 { 
-  grid-template-columns: repeat(1, minmax(0, 1fr)); 
-}
-
-/* Icon positioning helper */
-.icon-absolute {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1.25rem;
-  height: 1.25rem;
-  color: #64748b;
-}
-
-/* Loading spinner */
-.loading-border {
-  border: 2px solid #ffffff;
-  border-top: 2px solid transparent;
-  border-radius: 50%;
-}
-
-/* Enhanced Button Styles */
-.btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 1rem;
-  padding: 1rem 2rem;
-  font-weight: 600;
-  font-size: 1.125rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-}
-
-.btn-primary:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* Enhanced Input Styles */
-.input-field {
-  width: 100%;
-  padding: 1rem 1rem 1rem 3rem;
-  font-size: 1.125rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 1rem;
-  background: white;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.input-field:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-  outline: none;
-}
-
-.input-field:hover {
-  border-color: #c7d2fe;
-}
-
-/* Rating Badge */
-.rating-badge {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #047857;
-}
-
-/* Price Badge */
-.price-badge-cheap {
-  color: #047857;
-  font-weight: 700;
-  font-size: 1.125rem;
-}
-
-.price-badge-moderate {
-  color: #d97706;
-  font-weight: 700;
-  font-size: 1.125rem;
-}
-
-.price-badge-expensive {
-  color: #dc2626;
-  font-weight: 700;
-  font-size: 1.125rem;
-}
-
-/* Animation */
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.animate-spin {
-  animation: spin 1s linear infinite;
-}
-
-/* Restaurant Card Component */
-.restaurant-card {
-  background: white;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  border: 1px solid #e2e8f0;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.restaurant-card:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  transform: translateY(-4px);
-  border-color: #c7d2fe;
-}
-
-/* Input and Button Styles */
-input, select, button {
-  font-family: inherit;
-  border: none;
-  outline: none;
-}
-
-button {
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Focus States */
-input:focus, select:focus, button:focus {
-  outline: 2px solid #6366f1;
-  outline-offset: 2px;
-}
-
-.focus\:border-primary-500:focus { 
-  border-color: #6366f1; 
-}
-.focus\:ring-0:focus { 
-  box-shadow: none; 
-}
-
-/* Hover States */
-.hover\:bg-gray-200:hover { 
-  background-color: #e2e8f0; 
-}
-.hover\:bg-primary-600:hover { 
-  background-color: #4f46e5; 
-}
-.hover\:bg-primary-700:hover { 
-  background-color: #4338ca; 
-}
-.hover\:shadow-xl:hover { 
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.1); 
-}
-.hover\:text-primary-700:hover { 
-  color: #4338ca; 
-}
-.hover\:border-primary-400:hover {
-  border-color: #a5b4fc;
-}
-
-/* Responsive Design */
-
-/* Mobile Styles (up to 640px) */
-@media (max-width: 640px) {
-  html {
-    font-size: 14px;
+/* Custom component classes that your App.jsx is using */
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl bg-green-500 text-white font-semibold shadow-lg
+           transition-all duration-200 hover:bg-green-600 disabled:cursor-not-allowed
+           disabled:opacity-50 disabled:hover:bg-green-500;
   }
-  
-  .text-2xl { 
-    font-size: 1.25rem; 
-    line-height: 1.75rem; 
-  }
-  .text-3xl { 
-    font-size: 1.5rem; 
-    line-height: 2rem; 
-  }
-  .text-xl { 
-    font-size: 1.125rem; 
-    line-height: 1.75rem; 
-  }
-  
-  button, input, select {
-    min-height: 44px;
-    font-size: 16px !important;
-  }
-  
-  .px-8 { 
-    padding-left: 1rem; 
-    padding-right: 1rem; 
-  }
-  .py-4 { 
-    padding-top: 0.75rem; 
-    padding-bottom: 0.75rem; 
-  }
-  
-  .grid { 
-    gap: 1rem; 
-  }
-  .gap-6 { 
-    gap: 1rem; 
-  }
-  
-  .max-w-7xl {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .lg\:flex-row {
-    flex-direction: column;
-  }
-  
-  .lg\:w-48 {
-    width: 100%;
-  }
-}
 
-/* Small Mobile (up to 480px) */
-@media (max-width: 480px) {
-  .gap-4 {
-    gap: 0.75rem;
+  .input-field {
+    @apply w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl 
+           focus:border-green-500 focus:ring-2 focus:ring-green-500/20 focus:outline-none
+           transition-colors bg-white;
   }
-}
 
-/* Desktop/Tablet Breakpoints */
-@media (min-width: 640px) {
-  .sm\:block { display: block; }
-  .sm\:hidden { display: none; }
-}
+  .icon-absolute {
+    @apply absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400;
+  }
 
-@media (min-width: 768px) {
-  .md\:grid-cols-2 { 
-    grid-template-columns: repeat(2, minmax(0, 1fr)); 
-  }
-  .md\:grid-cols-4 { 
-    grid-template-columns: repeat(4, minmax(0, 1fr)); 
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:hidden { 
-    display: none; 
-  }
-  .lg\:flex-row { 
-    flex-direction: row; 
-  }
-  .lg\:grid-cols-3 { 
-    grid-template-columns: repeat(3, minmax(0, 1fr)); 
-  }
-  .lg\:w-48 { 
-    width: 12rem; 
-  }
-}
-
-/* Tablet Styles (641px to 1024px) */
-@media (min-width: 641px) and (max-width: 1024px) {
-  html {
-    font-size: 15px;
-  }
-  
-  .grid { 
-    gap: 1.5rem; 
-  }
-  .gap-6 { 
-    gap: 1.5rem; 
-  }
-}
-
-/* Desktop Styles (1025px+) */
-@media (min-width: 1025px) {
-  html {
-    font-size: 16px;
-  }
-  
-  .grid { 
-    gap: 2rem; 
-  }
-  .gap-6 { 
-    gap: 2rem; 
-  }
-}
-
-/* Touch Device Optimizations */
-@media (hover: none) and (pointer: coarse) {
-  .restaurant-card:active {
-    transform: scale(0.98);
-  }
-  
-  button:active {
-    transform: scale(0.95);
-  }
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-@media (prefers-contrast: high) {
   .restaurant-card {
-    border: 2px solid #000;
+    @apply bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden
+           hover:shadow-xl transition-all duration-300 cursor-pointer;
   }
-  
-  .bg-red-50 {
-    border: 2px solid #d97706;
+
+  .rating-badge {
+    @apply flex items-center space-x-1 bg-yellow-100 text-yellow-800 px-2 py-1 rounded-lg text-sm font-medium;
+  }
+
+  .price-badge-cheap {
+    @apply bg-green-100 text-green-800 px-2 py-1 rounded-lg text-sm font-bold;
+  }
+
+  .price-badge-moderate {
+    @apply bg-yellow-100 text-yellow-800 px-2 py-1 rounded-lg text-sm font-bold;
+  }
+
+  .price-badge-expensive {
+    @apply bg-red-100 text-red-800 px-2 py-1 rounded-lg text-sm font-bold;
+  }
+
+  .loading-border {
+    @apply border-2 border-gray-200 border-t-green-500 rounded-full;
   }
 }
 
-/* Ensure no horizontal overflow */
-body, html, #root, * {
-  max-width: 100vw;
-}
-
-/* Scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
-
-/* Print styles */
-@media print {
-  .search-container,
-  .filter-container,
-  .view-toggle,
-  .map-container,
-  footer {
-    display: none !important;
+/* Custom utility classes */
+@layer utilities {
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
   }
-  
-  .restaurant-card {
-    break-inside: avoid;
-    margin-bottom: 1rem;
-    border: 1px solid #000;
+
+  .bg-gradient-food {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
   }
+
+  .bg-primary-50 {
+    background-color: #f0fdf4;
+  }
+
+  .border-primary-200 {
+    border-color: #bbf7d0;
+  }
+
+  .text-primary-800 {
+    color: #166534;
+  }
+
+  .text-primary-600 {
+    color: #16a34a;
+  }
+
+  .text-primary-700 {
+    color: #15803d;
+  }
+
+  .text-primary-500 {
+    color: #22c55e;
+  }
+}
+
+/* Leaflet map styling */
+.leaflet-container {
+  @apply rounded-2xl;
+}
+
+/* Base styling */
+body {
+  @apply text-gray-900 bg-gray-50;
 }
