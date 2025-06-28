@@ -2,7 +2,7 @@
   "name": "cheap-eats-nyc",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://connorfata.github.io/cheap-eats-nyc/",
+  "homepage": "https://connorfata.github.io/cheap-food/",
   "type": "module",
   "scripts": {
     "dev": "vite",
