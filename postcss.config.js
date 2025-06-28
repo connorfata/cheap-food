@@ -3,5 +3,5 @@ export default {
     tailwindcss: {},
     autoprefixer: {},
   },
-  base: "/cheap-eats-nyc/", 
+  base: "/cheap-eat/", 
 }
