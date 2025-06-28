@@ -4,5 +4,4 @@ export default {
     autoprefixer: {},
   },
   base: "/cheap-eats-nyc/", 
-
 }
